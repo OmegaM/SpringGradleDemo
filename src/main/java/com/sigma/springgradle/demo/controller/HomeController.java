@@ -29,7 +29,7 @@ public class HomeController {
     public Map<String, String> home(){
         logger.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
-        map.put("message", "this is my first gradle springmvc project!");
+        map.put("message", "test jenkins hook!");
         return map;
     }
 }
