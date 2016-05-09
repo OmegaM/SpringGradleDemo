@@ -57,7 +57,7 @@ dependencies {
         'org.slf4j:jcl-over-slf4j:1.7.12'
     )
     compile (
-        'org.slf4j:slf4j-api:1.7.21',
+//        'org.slf4j:slf4j-api:1.7.21',
         'org.springframework:spring-webmvc:' + springVersion,
         'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion,
         'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion,
