@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("index")
 public class HomeController {
     
-    private Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static Logger logger = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public Map<String, String> home(){

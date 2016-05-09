@@ -51,13 +51,15 @@ dependencies {
     //add dep
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
     runtime (
-        'javax.servlet:jstl:1.2',
-        'ch.qos.logback:logback-classic:1.1.7',
-        'org.logback-extensions:logback-ext-spring:0.1.4',
-        'org.slf4j:jcl-over-slf4j:1.7.12'
+        'javax.servlet:jstl:1.2'
+        
+        
+        
     )
     compile (
-//        'org.slf4j:slf4j-api:1.7.21',
+        'ch.qos.logback:logback-classic:1.1.7',
+        'org.logback-extensions:logback-ext-spring:0.1.4',
+        'org.slf4j:jcl-over-slf4j:1.7.20',
         'org.springframework:spring-webmvc:' + springVersion,
         'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion,
         'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion,
