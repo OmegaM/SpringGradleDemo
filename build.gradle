@@ -63,6 +63,7 @@ dependencies {
         'ch.qos.logback:logback-classic:1.1.7',
         'org.logback-extensions:logback-ext-spring:0.1.4',
         'org.slf4j:jcl-over-slf4j:1.7.20',
+        'com.google.inject:guice:3.0',
         'org.springframework:spring-webmvc:' + springVersion,
         'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion,
         'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion,
