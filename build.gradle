@@ -115,3 +115,4 @@ task testCompleted << {
     }
 }
 
+test.finalizedBy testCompleted
