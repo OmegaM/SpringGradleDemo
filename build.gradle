@@ -3,6 +3,7 @@ apply plugin: 'java'
 apply plugin: 'war'
 apply plugin: 'jetty'
 
+version = 'SNAPSHOT-1.0'
 
 task copyTask(type: Copy){
     from '.'
@@ -42,6 +43,8 @@ sourceSets {
     
     }
 }
+
+
 
 dependencies {
     //define dep pkg version
@@ -84,3 +87,31 @@ jettyRun {
 jettyRunWar{
     httpPort = 9090
 }
+
+test {
+    ext.testResult = true
+}
+
+
+task testCompleted << {
+    if(test.testResult){
+        try{
+            logger.lifecycle("Build war package!")
+            war.execute()
+            def warDir = "/Users/Omega/warPackageCollection"
+            def warname = project.name + '-' + version + '.war'
+            def fromdir = buildDir.toString() + "/libs/" + warname
+            copy{
+                logger.lifecycle("Copy war  from:  $fromdir To : $warDir")
+                from fromdir
+                into warDir
+                rename {
+                    String fileName -> project.name + '.war'
+                }
+            }
+        } catch (Exception ex){
+            logger.error("Error!" + ex.message)
+        }
+    }
+}
+
