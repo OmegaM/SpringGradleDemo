@@ -43,7 +43,17 @@ public class SpringTestCaseDemo {
     }
     
     @Test
-    public void test() throws Exception {
+    public void test1() throws Exception {
+        Assert.assertTrue(true);
+    }
+    
+    @Test
+    public void test2() throws Exception {
+        Assert.assertTrue(true);
+    }
+    
+    @Test
+    public void test3() throws Exception {
         Assert.assertTrue(true);
     }
     
