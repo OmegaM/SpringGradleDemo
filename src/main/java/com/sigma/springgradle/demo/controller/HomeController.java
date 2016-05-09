@@ -24,14 +24,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
     
     private Logger logger = LoggerFactory.getLogger(HomeController.class);
-    
-    
+
     @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    
     public Map<String, String> home(){
         logger.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
-        map.put("message", "home page!");
+        map.put("message", "this is my first gradle springmvc project!");
         return map;
     }
 }
