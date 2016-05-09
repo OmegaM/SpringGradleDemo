@@ -1,0 +1,84 @@
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+
+task copyTask(type: Copy){
+    from '.'
+    into 'build'
+    include '*.txt'
+    rename {
+        String fileName -> fileName.replace('.txt', '.data')
+    }
+}
+
+task zipTask(type: Zip){
+    File destDir = file('build/dest')
+    archiveName 'abc.zip'
+    from 'src'
+    destinationDir destDir
+}
+
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+[compileJava, compileTestJava, javadoc]*.options*.encoding = "UTF-8"
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/java'
+        }
+        resources {
+            srcDir 'src/resources'
+        }
+    
+    }
+}
+
+dependencies {
+    //define dep pkg version
+    def springVersion = '4.2.5.RELEASE'
+    def jacksonVersion = '2.7.3'
+    
+    //add dep
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    runtime (
+        'javax.servlet:jstl:1.2',
+        'ch.qos.logback:logback-classic:1.1.7',
+        'org.logback-extensions:logback-ext-spring:0.1.4',
+        'org.slf4j:jcl-over-slf4j:1.7.12'
+    )
+    compile (
+        'org.slf4j:slf4j-api:1.7.21',
+        'org.springframework:spring-webmvc:' + springVersion,
+        'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion,
+        'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion,
+        'com.fasterxml.jackson.core:jackson-annotations:' + jacksonVersion
+        
+    )
+    testCompile (
+        'junit:junit:4.12', 
+        'org.mockito:mockito-all:1.8.4',
+        'org.springframework:spring-test:' + springVersion
+    )
+}
+
+jettyRun {
+    webAppSourceDirectory file("$projectDir/src/main/webapp")
+    contextPath project.name
+    httpPort = 9090
+    scanIntervalSeconds 1
+    reload "automatic"
+}
+
+jettyRunWar{
+    httpPort = 9090
+}
