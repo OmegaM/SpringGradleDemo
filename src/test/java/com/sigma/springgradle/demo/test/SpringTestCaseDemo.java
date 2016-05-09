@@ -3,11 +3,7 @@
  */
 package com.sigma.springgradle.demo.test;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -22,6 +18,10 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 /**
  * @author Omega
@@ -33,12 +33,12 @@ import org.springframework.web.context.WebApplicationContext;
 
 public class SpringTestCaseDemo {
     
-    @Before
+    @BeforeMethod
     public void setUp(){
         
     }
     
-    @After
+    @AfterMethod
     public void tearDown() throws Exception {
     }
     

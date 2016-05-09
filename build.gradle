@@ -69,8 +69,14 @@ dependencies {
         'com.fasterxml.jackson.core:jackson-annotations:' + jacksonVersion
         
     )
+    
+    testCompile('org.uncommons:reportng:1.1.4'){
+        exclude group: "org.testng", module: "testng"
+    }
+    
     testCompile (
-        'junit:junit:4.12', 
+        'org.testng:testng:6.8.21',
+        
         'org.mockito:mockito-all:1.8.4',
         'org.springframework:spring-test:' + springVersion
     )
@@ -90,6 +96,19 @@ jettyRunWar{
 
 test {
     ext.testResult = true
+    useTestNG(){
+        
+        useDefaultListeners = true
+    }
+    
+    options {
+        listeners << 'org.uncommons.reportng.HTMLReporter'
+        listeners << 'org.uncommons.reportng.JUnitXMLReporter'
+    }
+    
+    testLogging.showStandardStreams = true
+    minHeapSize = "128m"
+    maxHeapSize = "512m"
 }
 
 
