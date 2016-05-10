@@ -23,11 +23,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("index")
 public class HomeController {
     
-    private static Logger logger = LoggerFactory.getLogger(HomeController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
 
     @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public Map<String, String> home(){
-        logger.error("++++++ into HomeController ++++++");
+        LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
         map.put("message", "test jenkins hook!");
         return map;
