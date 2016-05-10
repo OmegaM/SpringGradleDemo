@@ -25,7 +25,11 @@ public class HomeController
 {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
-
+    
+    /**
+     * home方法
+     * @return map
+     */
     @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public Map<String, String> home()
     {
