@@ -114,8 +114,9 @@ test {
 }
 
 checkstyle {
-    toolVersion = '6.4.1'
+    toolVersion = '6.18'
     sourceSets = [sourceSets.main]
+    println sourceSets
     configFile = rootProject.file("config/checkstyle/checkstyle.xml");
     showViolations = true
     ignoreFailures = true
@@ -127,9 +128,11 @@ checkstyleTest {
 
 
 tasks.withType(Checkstyle) {
-  reports {
-    xml.destination rootProject.file("build/reports/checkstyle.xml")
-  }
+    
+    reports {
+        html.enabled false
+        xml.destination rootProject.file("build/reports/checkstyle.xml")
+    }
 }
 
 
