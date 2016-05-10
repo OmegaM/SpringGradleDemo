@@ -113,6 +113,25 @@ test {
     maxHeapSize = "512m"
 }
 
+checkstyle {
+    toolVersion = '6.4.1'
+    sourceSets = [sourceSets.main]
+    configFile = rootProject.file("config/checkstyle/checkstyle.xml");
+    showViolations = true
+    ignoreFailures = true
+}
+
+checkstyleTest {
+    enabled = false
+}
+
+
+tasks.withType(Checkstyle) {
+  reports {
+    html.destination rootProject.file("build/reports/checkstyle.html")
+  }
+}
+
 
 task testCompleted << {
     if(test.testResult){
@@ -135,5 +154,6 @@ task testCompleted << {
         }
     }
 }
+
 
 test.finalizedBy testCompleted
