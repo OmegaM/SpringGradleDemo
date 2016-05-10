@@ -128,7 +128,7 @@ checkstyleTest {
 
 tasks.withType(Checkstyle) {
   reports {
-    html.destination rootProject.file("build/reports/checkstyle.html")
+    xml.destination rootProject.file("build/reports/checkstyle.xml")
   }
 }
 
