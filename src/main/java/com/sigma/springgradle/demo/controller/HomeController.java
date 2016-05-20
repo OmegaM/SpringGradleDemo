@@ -35,6 +35,8 @@ public class HomeController
     {
         String string = null;
         string.length();
+        String string2 = null;
+        string2.trim();
         LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
         map.put("message", "test jenkins hook!");
