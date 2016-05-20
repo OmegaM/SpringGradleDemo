@@ -140,6 +140,13 @@ tasks.withType(Checkstyle) {
     }
 }
 
+tasks.withType(FindBugs){
+    reports {
+        html.enabled false
+        xml.destination rootProject.file("build/reports/findbugs.xml")
+    }
+}
+
 
 task testCompleted << {
     if(test.testResult){
