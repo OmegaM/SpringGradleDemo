@@ -33,10 +33,7 @@ public class HomeController
     @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
     public Map<String, String> home()
     {
-        String string = null;
-        string.length();
-        String string2 = null;
-        string2.trim();
+        
         LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
         map.put("message", "test jenkins hook!");
