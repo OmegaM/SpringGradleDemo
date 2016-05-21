@@ -123,6 +123,10 @@ checkstyle {
     ignoreFailures = true
 }
 
+findbugs {
+    ignoreFailures = true
+}
+
 checkstyleTest {
     enabled = false
 }
@@ -133,7 +137,6 @@ findbugsTest {
 
 
 tasks.withType(Checkstyle) {
-    
     reports {
         html.enabled false
         xml.destination rootProject.file("build/reports/checkstyle.xml")
