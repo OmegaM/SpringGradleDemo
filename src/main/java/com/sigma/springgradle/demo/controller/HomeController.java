@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("index")
-public class HomeController 
+public class HomeController
 {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
