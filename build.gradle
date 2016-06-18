@@ -4,6 +4,7 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'checkstyle'
 apply plugin: 'findbugs'
+apply plugin: 'jacoco'
 
 version = 'SNAPSHOT-1.0'
 
@@ -112,7 +113,14 @@ test {
     testLogging.showStandardStreams = true
     minHeapSize = "128m"
     maxHeapSize = "512m"
+    
+    
 }
+
+jacoco{  
+        toolVersion = "0.7.6.201602180812"  
+        reportsDir = file("$buildDir/customJacocoReportDir")  
+} 
 
 checkstyle {
     toolVersion = '6.18'
