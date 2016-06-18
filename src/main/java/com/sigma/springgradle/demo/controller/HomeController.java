@@ -8,10 +8,13 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.sigma.springgradle.demo.service.HomeService;
 
 /**
  * @author Omega
@@ -25,6 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class HomeController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(HomeController.class);
+    
+    @Autowired
+    private HomeService homeService;
     
     /**
      * home方法
@@ -48,9 +54,10 @@ public class HomeController {
         LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
         if ("1".equals(id)) {
+            
             map.put("message", "test jenkins hook!");
         } else {
-            map.put("message", "none!");
+            map.put("message", homeService.hello(Integer.valueOf(id)));
         }
         return map;
     }

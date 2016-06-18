@@ -52,7 +52,7 @@ public class SpringTestCaseDemo extends AbstractTestCase {
     @Test
     public void testController3() throws Exception {
         this.mockMvc.perform(get("/index/user/2").contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"none!\"}"))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"x bigger then one\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 }
