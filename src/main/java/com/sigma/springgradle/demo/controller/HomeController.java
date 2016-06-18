@@ -42,4 +42,16 @@ public class HomeController {
         }
         return map;
     }
+    
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    public Map<String, String> user(@PathVariable("id") String id) {
+        LOGGER.error("++++++ into HomeController ++++++");
+        Map<String, String> map = new HashMap<>();
+        if ("1".equals(id)) {
+            map.put("message", "test jenkins hook!");
+        } else {
+            map.put("message", "none!");
+        }
+        return map;
+    }
 }

@@ -54,4 +54,11 @@ public class SpringTestCaseDemo extends AbstractTestNGSpringContextTests {
                 .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"none!\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
+    
+    @Test
+    public void testController3() throws Exception {
+        this.mockMvc.perform(get("/index/user/2").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"none!\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
 }
