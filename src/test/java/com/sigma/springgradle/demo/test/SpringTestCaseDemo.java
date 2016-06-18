@@ -9,9 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.testng.annotations.BeforeMethod;
@@ -26,11 +23,8 @@ import com.sigma.springgradle.demo.controller.HomeController;
  *
  * @project SpringGradleDemo
  */
-// @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/root-context.xml",
-        "file:src/main/webapp/WEB-INF/spring-mvc-config.xml" })
-@WebAppConfiguration
-public class SpringTestCaseDemo extends AbstractTestNGSpringContextTests {
+
+public class SpringTestCaseDemo extends AbstractTestCase {
     private MockMvc mockMvc;
     
     @Autowired
