@@ -42,9 +42,16 @@ public class SpringTestCaseDemo extends AbstractTestNGSpringContextTests {
     }
     
     @Test
-    public void testController() throws Exception {
-        this.mockMvc.perform(get("/index/home").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(status().isOk())
-                .andExpect(content().string("{\"message\":\"test jenkins hook!\"}"))
+    public void testController1() throws Exception {
+        this.mockMvc.perform(get("/index/home/1").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"test jenkins hook!\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+    
+    @Test
+    public void testController2() throws Exception {
+        this.mockMvc.perform(get("/index/home/2").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"none!\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
 }

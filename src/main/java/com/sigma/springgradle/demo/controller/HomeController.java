@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,11 +31,15 @@ public class HomeController {
      * 
      * @return map
      */
-    @RequestMapping(value = "/home", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
-    public Map<String, String> home() {
+    @RequestMapping(value = "/home/{id}", method = RequestMethod.GET, consumes = "application/json", produces = "application/json")
+    public Map<String, String> home(@PathVariable("id") String id) {
         LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
-        map.put("message", "test jenkins hook!");
+        if ("1".equals(id)) {
+            map.put("message", "test jenkins hook!");
+        } else {
+            map.put("message", "none!");
+        }
         return map;
     }
 }
