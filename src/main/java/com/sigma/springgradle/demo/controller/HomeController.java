@@ -53,12 +53,7 @@ public class HomeController {
     public Map<String, String> user(@PathVariable("id") String id) {
         LOGGER.error("++++++ into HomeController ++++++");
         Map<String, String> map = new HashMap<>();
-        if ("1".equals(id)) {
-            
-            map.put("message", "test jenkins hook!");
-        } else {
-            map.put("message", homeService.hello(Integer.valueOf(id)));
-        }
+        map.put("message", homeService.hello(Integer.valueOf(id)));
         return map;
     }
 }

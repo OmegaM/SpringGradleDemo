@@ -18,6 +18,8 @@ public class HomeService {
     public String hello(int x) {
         if (x < 1) {
             return "x less then one";
+        } else if (x == 1) {
+            return "x equals to one";
         } else {
             return "x bigger then one";
         }

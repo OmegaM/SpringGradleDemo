@@ -55,4 +55,18 @@ public class SpringTestCaseDemo extends AbstractTestCase {
                 .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"x bigger then one\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
     }
+    
+    @Test
+    public void testController4() throws Exception {
+        this.mockMvc.perform(get("/index/user/-1").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"x less then one\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+    
+    @Test
+    public void testController5() throws Exception {
+        this.mockMvc.perform(get("/index/user/1").contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"x equals to one\"}"))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
 }
