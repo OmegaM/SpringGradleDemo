@@ -7,15 +7,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import com.sigma.springgradle.demo.controller.HomeController;
 
@@ -26,22 +26,22 @@ import com.sigma.springgradle.demo.controller.HomeController;
  *
  * @project SpringGradleDemo
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+// @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/root-context.xml",
         "file:src/main/webapp/WEB-INF/spring-mvc-config.xml" })
 @WebAppConfiguration
-public class SpringTestCaseDemo {
+public class SpringTestCaseDemo extends AbstractTestNGSpringContextTests {
     private MockMvc mockMvc;
     
     @Autowired
     private HomeController homeController;
     
-    @Before
+    @BeforeMethod
     public void setUp() {
         this.mockMvc = MockMvcBuilders.standaloneSetup(homeController).build();
     }
     
-    @org.junit.Test
+    @Test
     public void testController() throws Exception {
         this.mockMvc.perform(get("/index/home").contentType(MediaType.APPLICATION_JSON_UTF8)).andExpect(status().isOk())
                 .andExpect(content().string("{\"message\":\"test jenkins hook!\"}"))
