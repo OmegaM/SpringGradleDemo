@@ -3,3 +3,9 @@
 /.settings/
 .pmd
 /bin/
+
+# ignore eclipse files
+.project
+.classpath
+.settings
+.metadata
