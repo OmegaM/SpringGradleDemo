@@ -58,9 +58,6 @@ dependencies {
     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
     runtime (
         'javax.servlet:jstl:1.2'
-        
-        
-        
     )
     compile (
         'ch.qos.logback:logback-classic:1.1.7',
@@ -79,9 +76,9 @@ dependencies {
     }
     
     testCompile (
+        'junit:junit:4.12',
         'org.testng:testng:6.8.21',
-        
-        'org.mockito:mockito-all:1.8.4',
+        'org.mockito:mockito-all:1.9.5',
         'org.springframework:spring-test:' + springVersion
     )
 }
