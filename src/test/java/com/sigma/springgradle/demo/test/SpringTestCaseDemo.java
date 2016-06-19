@@ -63,7 +63,7 @@ public class SpringTestCaseDemo extends AbstractTestCase {
     
     @Test
     public void testController6() throws Exception {
-        this.getWithoutParamMock("/index/user/1", "{\"message\":\"x equals to one\"}");
+        this.getWithoutParamsMock("/index/user/1", "{\"message\":\"x equals to one\"}");
     }
     
     @Override

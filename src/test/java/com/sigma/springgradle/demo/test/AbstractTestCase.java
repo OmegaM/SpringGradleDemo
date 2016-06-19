@@ -6,6 +6,7 @@ package com.sigma.springgradle.demo.test;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
@@ -40,11 +41,18 @@ public abstract class AbstractTestCase extends AbstractTestNGSpringContextTests 
     
     @BeforeClass(alwaysRun = true)
     public void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(this.getController()).build();
+        MockitoAnnotations.initMocks(this);
+        this.mockMvc = MockMvcBuilders.standaloneSetup(this.getController()).alwaysExpect(status().is2xxSuccessful())
+                .alwaysExpect(content().contentType(MediaType.APPLICATION_JSON)).build();
     }
     
-    protected void getWithoutParamMock(String url, String expectedContent) throws Exception {
+    protected void getWithoutParamsMock(String url, String expectedContent) throws Exception {
         MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get(url);
+        this.jsonRequestMock(builder, expectedContent);
+    }
+    
+    protected void getWithParamsMock(String url, Object[] params, String expectedContent) throws Exception {
+        MockHttpServletRequestBuilder builder = MockMvcRequestBuilders.get(url, params);
         this.jsonRequestMock(builder, expectedContent);
     }
     
@@ -57,9 +65,8 @@ public abstract class AbstractTestCase extends AbstractTestNGSpringContextTests 
         builder.contentType(MediaType.APPLICATION_JSON_UTF8).accept(MediaType.APPLICATION_JSON)
                 .characterEncoding("UTF-8");
         
-        this.mockMvc.perform(builder).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk())
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string(expectedContent)).andDo(MockMvcResultHandlers.print());
+        this.mockMvc.perform(builder).andDo(MockMvcResultHandlers.print()).andExpect(content().string(expectedContent))
+                .andDo(MockMvcResultHandlers.print());
         
     }
 }
