@@ -59,7 +59,7 @@ public abstract class AbstractTestCase extends AbstractTestNGSpringContextTests 
         
         this.mockMvc.perform(builder).andDo(MockMvcResultHandlers.print()).andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().string(expectedContent));
+                .andExpect(content().string(expectedContent)).andDo(MockMvcResultHandlers.print());
         
     }
 }

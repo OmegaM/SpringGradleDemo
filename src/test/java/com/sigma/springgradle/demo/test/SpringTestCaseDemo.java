@@ -9,8 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.sigma.springgradle.demo.controller.HomeController;
@@ -27,11 +25,6 @@ public class SpringTestCaseDemo extends AbstractTestCase {
     
     @Autowired
     private HomeController homeController;
-    
-    @BeforeMethod
-    public void setUp() {
-        this.mockMvc = MockMvcBuilders.standaloneSetup(homeController).build();
-    }
     
     @Test
     public void testController1() throws Exception {

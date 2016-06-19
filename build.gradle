@@ -64,6 +64,7 @@ dependencies {
         'org.logback-extensions:logback-ext-spring:0.1.4',
         'org.slf4j:jcl-over-slf4j:1.7.20',
         'com.google.inject:guice:3.0',
+        'org.hibernate:hibernate-validator:5.2.4.Final',
         'org.springframework:spring-webmvc:' + springVersion,
         'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion,
         'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion,
