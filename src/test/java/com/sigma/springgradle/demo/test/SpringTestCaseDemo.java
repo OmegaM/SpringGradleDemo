@@ -9,7 +9,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,7 +24,6 @@ import com.sigma.springgradle.demo.controller.HomeController;
  */
 
 public class SpringTestCaseDemo extends AbstractTestCase {
-    private MockMvc mockMvc;
     
     @Autowired
     private HomeController homeController;
@@ -68,5 +66,15 @@ public class SpringTestCaseDemo extends AbstractTestCase {
         this.mockMvc.perform(get("/index/user/1").contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(status().isOk()).andExpect(content().string("{\"message\":\"x equals to one\"}"))
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
+    }
+    
+    @Test
+    public void testController6() throws Exception {
+        this.getWithoutParamMock("/index/user/1", "{\"message\":\"x equals to one\"}");
+    }
+    
+    @Override
+    protected Object getController() {
+        return this.homeController;
     }
 }
